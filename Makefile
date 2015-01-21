@@ -1,10 +1,8 @@
 CC=gcc
 CFLAGS=-Wall -g
 
-# HEADERS = someheader.h otherheader.h
-
-
-exercises = ex1 ex3 ex5 ex6 ex7 ex8 ex9 ex10
+# this is getting ridiculous and there must be a better way
+exercises = ex1 ex3 ex5 ex6 ex7 ex8 ex9 ex10 ex11
 
 all: $(exercises)
 
