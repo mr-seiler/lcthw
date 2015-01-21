@@ -1,9 +1,10 @@
+CC=gcc
 CFLAGS=-Wall -g
 
-all: ex1
+# HEADERS = someheader.h otherheader.h
 
-ex1:
-	cc $(CFLAGS) ex1.c -o ex1
+all: ex1 ex3
 
 clean:
 	rm -f ex1
+	rm -f ex3
