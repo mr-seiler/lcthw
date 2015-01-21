@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
     printThings(numbers, name);
 
     // yet another syntax for declaring strings...
+    // this looks like a pointer to a char.  it isn't.
     char *another = "Sid";
 
     printf("another: %s\n", another);
