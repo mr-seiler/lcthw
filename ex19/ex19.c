@@ -111,9 +111,7 @@ int Room_attack(void *self, int damage)
 
     if (monster)
     {
-        monster->proto.attack(monster, damage);
-        // shouldn't this return the value from monster->_(attack) instead???
-        return 1;
+        return monster->proto.attack(monster, damage);
     }
     else
     {
@@ -229,7 +227,11 @@ int process_input(Map *game)
             game->_(move)(game, WEST);
             break;
         case 'a':
-            game->_(attack)(game, damage);
+            if (game->_(attack)(game, damage))
+            {
+                printf("VICTORY!");
+                return 0;
+            }
             break;
         case 'l':
             puts("You can go:");
