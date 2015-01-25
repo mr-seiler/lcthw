@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <assert.h>
 
 #include "ex19.h"
 
@@ -13,6 +14,8 @@
  */
 int Monster_attack(void *self, int damage)
 {
+    assert(self != NULL);
+
     // cast the pointer passed to this method to a monster
     Monster *monster = self;
 
@@ -36,6 +39,8 @@ int Monster_attack(void *self, int damage)
 
 int Monster_init(void *self)
 {
+    assert(self != NULL);
+
     // cast
     Monster *monster = self;
     // set initial value
@@ -58,32 +63,34 @@ Object MonsterProto = {
 
 void *Room_move(void *self, Direction direction)
 {
+    assert(self != NULL);
+
     Room *room = self;
     Room *next = NULL;
 
     if (direction == NORTH && room->north)
     {
-        prtinf("You go north, into:\n");
+        printf("You go north, into:\n");
         next = room->north;
     }
     else if (direction == SOUTH && room->south)
     {
-        prtinf("You go south, into:\n");
+        printf("You go south, into:\n");
         next = room->south;
     }
-    else if (firection == EAST && room->east)
+    else if (direction == EAST && room->east)
     {
-        prtinf("You go east, into:\n");
+        printf("You go east, into:\n");
         next = room->east;
     }
     else if (direction == WEST && room->west)
     {
-        prtinf("You go west, into:\n");
+        printf("You go west, into:\n");
         next = room->west;
     }
     else
     {
-        printf("you can't go that direction");
+        printf("you can't go that direction\n");
         next = NULL;
     }
 
@@ -97,6 +104,8 @@ void *Room_move(void *self, Direction direction)
 
 int Room_attack(void *self, int damage)
 {
+    assert(self != NULL);
+
     Room *room = self;
     Monster *monster = room->bad_guy;
 
@@ -123,6 +132,8 @@ Object RoomProto = {
 
 void *Map_move(void *self, Direction direction)
 {
+    assert(self != NULL);
+
     Map *map = self;
     Room *location = map->location;
     Room *next = NULL;
@@ -139,6 +150,8 @@ void *Map_move(void *self, Direction direction)
 
 int Map_attack(void *self, int damage)
 {
+    assert(self != NULL);
+
     Map *map = self;
     Room *location = map->location;
 
@@ -147,6 +160,8 @@ int Map_attack(void *self, int damage)
 
 int Map_init(void *self)
 {
+    assert(self != NULL);
+
     Map *map = self;
 
     // make some rooms
@@ -187,7 +202,7 @@ Object MapProto = {
 /* core game logic */
 int process_input(Map *game)
 {
-    puts(">");
+    printf("\n>");
 
     char in = getchar();
     getchar(); // eats newline

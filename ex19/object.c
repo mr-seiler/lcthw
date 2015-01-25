@@ -25,6 +25,8 @@ void Object_destroy(void *self)
  */
 void Object_describe(void *self)
 {
+    assert(self != NULL);
+
     Object *obj = self;
     printf("%s.\n", obj->description);
 }
@@ -32,6 +34,7 @@ void Object_describe(void *self)
 /* Default initializer is a nop */
 int Object_init(void *self)
 {
+    assert(self != NULL);
     return 1;
 }
 
@@ -53,6 +56,8 @@ int Object_attack(void *self, int damage)
 
 void *Object_new(size_t size, Object proto, char *description)
 {
+    assert(description != NULL);
+
     // set the default functions on the prototype as needed
     if(!proto.init) proto.init = Object_init;
     if(!proto.describe) proto.describe = Object_describe;
@@ -65,6 +70,7 @@ void *Object_new(size_t size, Object proto, char *description)
     // Note that we are allocating more space than needed, but using
     // a pointer of type Object...
     Object *el = calloc(1, size);
+    assert(el != NULL);
     // copy the proto struct to the beginning of the new object
     *el = proto;
 

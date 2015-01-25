@@ -41,7 +41,7 @@ struct Room {
 typedef struct Room Room;
 
 // Room overrides these prototype methods
-void *Room_move(void *self, Directon direction);
+void *Room_move(void *self, Direction direction);
 int Room_attack(void *self, int damage);
 int Room_init(void *self);
 
